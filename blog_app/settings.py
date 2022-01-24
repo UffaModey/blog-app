@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b@%zi9^bh16k+(0rl8qj*7l#_8zkvy_cc*!wn)3^hdfhy(&tx('
+#SECRET_KEY = 'django-insecure-b@%zi9^bh16k+(0rl8qj*7l#_8zkvy_cc*!wn)3^hdfhy(&tx('
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'hidden-dawn-21749.herokuapp.com']
 
 
 # Application definition
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'django_simple_bulma',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_app.urls'
@@ -82,6 +89,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -134,4 +143,10 @@ STATICFILES_FINDERS = [
 
   # Now add our custom SimpleBulma one.
   'django_simple_bulma.finders.SimpleBulmaFinder',
+]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# location where you will store your static files
+STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')
 ]
