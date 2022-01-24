@@ -16,8 +16,8 @@ import django_heroku
 #import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'django_simple_bulma',
-    #'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -130,8 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-#STATIC_ROOT = Path(BASE_DIR).joinpath('static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = Path(BASE_DIR).joinpath('static')
 
 
 # Default primary key field type
@@ -151,12 +150,7 @@ STATICFILES_FINDERS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # location where you will store your static files
-#STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')]
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')]
 
 
 # Activate Django-Heroku.
