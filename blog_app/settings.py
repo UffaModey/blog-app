@@ -16,7 +16,8 @@ import django_heroku
 #import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_app.urls'
@@ -129,7 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = Path(BASE_DIR).joinpath('static')
+#STATIC_ROOT = Path(BASE_DIR).joinpath('static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Default primary key field type
@@ -146,11 +148,15 @@ STATICFILES_FINDERS = [
   'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # location where you will store your static files
-STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')
-]
+#STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')]
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 # Activate Django-Heroku.
