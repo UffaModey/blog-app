@@ -6,3 +6,4 @@ psycopg2
 whitenoise
 django-environ
 python-dotenv
+django_simple_bulma
