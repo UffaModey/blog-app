@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 #import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -151,5 +152,6 @@ STATICFILES_FINDERS = [
 STATICFILES_DIRS = [Path(BASE_DIR,'blog_app/static')
 ]
 
+
 # Activate Django-Heroku.
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
