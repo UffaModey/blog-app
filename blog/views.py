@@ -5,3 +5,8 @@ def home(request):
 
     posts = client.entries()
     return render(request, "home.html", {'posts': posts})
+
+def posts(request):
+
+    posts = client.entries()
+    return render(request, "posts.html", {'posts': posts})
