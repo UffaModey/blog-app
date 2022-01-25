@@ -67,6 +67,12 @@
   </nav>
   <!-- END NAV -->
 
+  {% block content %}{% endblock %}
+
+  {% for blog in posts %}
+    <li>{{ blog.title }}</li>
+  {% endfor %}
+
   <!-- Image -->
   <section class="hero ">
     <div class="hero-body">

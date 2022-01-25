@@ -7,3 +7,4 @@ whitenoise
 django-environ
 python-dotenv
 django_simple_bulma
+contentful

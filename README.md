@@ -1,6 +1,9 @@
 # contentful-blog-app
-Blog app designed with Contentful and Django. Contentful is used for content infrastructure management for the application. A non technical user easily create and update content on the application using Contentful.
+Blog app designed with Contentful and Django. Contentful is used for content infrastructure management for the application. 
+The Contentful web app is an easy-to-use editor for authoring content. A non technical user easily create and update content on the application using Contentful.
 
+## APIs
+Contentful follows an API-first approach, which means that all of its functionality is provided by an API.
 ## Cloud Hosting
 The application is hosted on Heroku. https://hidden-dawn-21749.herokuapp.com/
 
