@@ -67,52 +67,33 @@
   </nav>
   <!-- END NAV -->
 
-  {% block content %}{% endblock %}
-
-  {% for blog in posts %}
-    <li>{{ blog.title }}</li>
-  {% endfor %}
-
-  <!-- Image -->
+  <!-- Content -->
   <section class="hero ">
     <div class="hero-body">
       <div class="container">
         <div class="columns">
           <div class="column is-8 is-offset-2">
             <figure class="image is-16by9">
-              {% load static %} <img src="{% static "blog/images/first-post-img.png" %}" alt="first-post" />
+              {% load static %} <img src="{% static "blog/images/home-page.png" %}" alt="home-page" />
             </figure>
           </div>
         </div>
 
+        {% for blog in posts %}
         <section class="section">
           <div class="columns">
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
-                <h2 class="subtitle is-4">December 25, 2022</h2>
-                <h1 class="title">Blog App</h1>
-                <p>EZ Blog app is an experiment to create a blog application using Contentful for managing the blog content infrastructure.
-                    The blog is developed using Django and hosted on Heroku.</p>
+                <h2 class="subtitle is-4">{{ blog.date }}</h2>
+                <h1 class="title">{{ blog.title }}</h1>
+                <p>{{ blog.content }}</p>
               </div>
             </div>
           </div>
         </section>
+        {% endfor %}
 
         <div class="is-divider"></div>
-
-        <section class="section">
-          <div class="columns">
-            <div class="column is-8 is-offset-2">
-              <div class="content is-medium">
-                <h2 class="subtitle is-4">December 25, 2022</h2>
-                <h1 class="title">What this is</h1>
-                <p>The application will be accessible through the Heroku app URL.
-                A database will be connected to the app to increase the functionality. Heroku Postgres is used for the development.
-                Postgres was installed locally during development.</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
 
       </div>
