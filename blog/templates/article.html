@@ -67,34 +67,39 @@
   </nav>
   <!-- END NAV -->
 
-  <!-- Posts -->
-
+  <!-- Content -->
   <section class="hero ">
     <div class="hero-body">
       <div class="container">
-
-        {% for post in posts %}
+        <div class="columns">
+          <div class="column is-8 is-offset-2">
+            <figure class="image is-16by9">
+              {% load static %} <img src="{% static "blog/images/home-page.png" %}" alt="home-page" />
+            </figure>
+          </div>
+        </div>
 
 
         <section class="section">
           <div class="columns">
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
-                <h2 class="subtitle is-4">{{ post.date }}</h2>
-                <a href="/posts/{{ post.slug }}/"><h1 class="title">{{ post.title }}</h1></a>
-                <p></p>
+                <h2 class="subtitle is-4">{{ article.date }}</h2>
+                <h1 class="title">{{ article.title }}</h1>
+                <p>{{ article.content }}</p>
               </div>
             </div>
           </div>
         </section>
 
-        {% endfor %}
         <div class="is-divider"></div>
 
 
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
 
   <footer class="footer">
     <div class="content has-text-centered">
