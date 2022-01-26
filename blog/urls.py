@@ -3,6 +3,7 @@ from .views import home
 from .views import posts
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+
 app_name = "blog"
 
 urlpatterns = [
