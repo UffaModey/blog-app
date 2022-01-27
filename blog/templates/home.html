@@ -85,7 +85,7 @@
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
                 <h2 class="subtitle is-4">{{ posts.0.date }}</h2>
-                <h1 class="title">{{ posts.0.title }}</h1>
+                <a href="/posts/{{ posts.0.slug }}/{{ posts.0.image.id }}"><h1 class="title">{{ posts.0.title }}</h1></a>
                 <p>{{ posts.0.content | markdown | safe}}</p>
               </div>
             </div>
