@@ -10,7 +10,7 @@ app_name = "blog"
 urlpatterns = [
     path("", home, name="home"),
     path("posts/", posts, name="posts"),
-    path("posts/<slug:slug>/", article, name="article"),
+    path("posts/<slug:slug>/<str:image_id>/", article, name="article"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
