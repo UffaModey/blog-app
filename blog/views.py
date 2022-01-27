@@ -18,6 +18,7 @@ def article(request, slug, image_id):
         if (article.slug == slug):
             image_url = assets.url()
 
-            return render(request, "article.html", {'article': article, 'image_url': image_url}, )
+            return render(request, "article.html", {'article': article, 'image_url': image_url} )
 
-
+def newsletter(request):
+            return render(request, "newsletter.html" )
