@@ -79,14 +79,14 @@
           </div>
         </div>
 
-
+        {% load markdown_extras %}
         <section class="section">
           <div class="columns">
             <div class="column is-8 is-offset-2">
               <div class="content is-medium">
                 <h2 class="subtitle is-4">{{ posts.0.date }}</h2>
                 <h1 class="title">{{ posts.0.title }}</h1>
-                <p>{{ posts.0.content }}</p>
+                <p>{{ posts.0.content | markdown | safe}}</p>
               </div>
             </div>
           </div>
