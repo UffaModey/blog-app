@@ -58,7 +58,7 @@
           <a href="/posts/" class="navbar-item is-size-5 has-text-weight-semibold">
             Posts
           </a>
-          <a class="navbar-item is-size-5 has-text-weight-semibold">
+          <a href="/newsletter/" class="navbar-item is-size-5 has-text-weight-semibold">
             Newsletter
           </a>
         </div>
@@ -76,16 +76,18 @@
             <div class="hero-body">
               <h2 class="title is-4">Sign up for our newsletter</h2>
                 <div class="column is-6 is-offset-3">
-                  <div class="field has-addons has-addons-centered">
-                    <div class="control is-expanded">
-                      <input class="input " type="text" placeholder="Email address">
-                    </div>
-                    <div class="control">
-                      <a class="button is-info">
-                        Subscribe
-                      </a>
-                    </div>
-                  </div>
+                  <form action="/newsletter/" onsubmit="return validateForm()" method="POST">
+                      {% csrf_token %}
+                      <div class="field has-addons has-addons-centered">
+                          <div class="control is-expanded">
+                              <input class="input " type="text" placeholder="Email address" id="emailn" name="emailn" value="">
+                          </div>
+                          <div class="control">
+                              <button type="submit" value="submit" class="button is-info" >Subscribe</button>
+                          </div>
+                      </div>
+                  </form>
+                </div>
                 </div>
             </div>
           </div>

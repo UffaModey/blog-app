@@ -1,10 +1,23 @@
 from django.shortcuts import render
 from .models import client
+from .models import Emails
 
 def home(request):
-
     posts = client.entries()
-    return render(request, "home.html", {'posts': posts})
+
+    if request.method == 'POST':
+
+        email = request.POST.get('email', None)
+
+        #put email in the database
+        email_object = Emails.objects.create(email=email)
+        email_object.save()
+
+        return render(request, "home.html", {'posts': posts})
+
+    else:
+        return render(request, "home.html", {'posts': posts})
+
 
 def posts(request):
     posts = client.entries()
@@ -21,4 +34,15 @@ def article(request, slug, image_id):
             return render(request, "article.html", {'article': article, 'image_url': image_url} )
 
 def newsletter(request):
-            return render(request, "newsletter.html" )
+    if request.method == 'POST':
+        email = request.POST.get('emailn', None)
+
+        #put email in the database
+        email_object = Emails.objects.create(email=email)
+        email_object.save()
+        return render(request, "newsletter.html")
+
+    else:
+        return render(request, "newsletter.html")
+
+

@@ -23,5 +23,5 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('posts/', include('blog.urls')),
     path('posts/<slug:slug>/<str:image_id>/', include('blog.urls')),
-    path('newsletter/', include('blog.urls'))
+    path('newsletter/', include('blog.urls')),
 ]
