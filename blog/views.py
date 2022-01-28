@@ -13,7 +13,9 @@ def home(request):
         email_object = Emails.objects.create(email=email)
         email_object.save()
 
-        return render(request, "home.html", {'posts': posts})
+        subscribe_success = "Yay! You have been subscribed"
+
+        return render(request, "home.html", {'posts': posts, 'subscribe_success': subscribe_success})
 
     else:
         return render(request, "home.html", {'posts': posts})
@@ -40,7 +42,9 @@ def newsletter(request):
         #put email in the database
         email_object = Emails.objects.create(email=email)
         email_object.save()
-        return render(request, "newsletter.html")
+
+        subscribe_success = "Yay! You have been subscribed"
+        return render(request, "newsletter.html", {'subscribe_success': subscribe_success})
 
     else:
         return render(request, "newsletter.html")
