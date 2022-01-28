@@ -19,12 +19,17 @@ def home(request):
         # check if the email is valid
         if (re.fullmatch(regex, email)):
 
-            #put email in the database
-            email_object = Emails.objects.create(email=email)
-            email_object.save()
+            try:
+                #put email in the database
+                email_object = Emails.objects.create(email=email)
+                email_object.save()
 
-            subscribe_success = "Yay! You have been subscribed"
-            return render(request, "home.html", {'posts': posts, 'subscribe_success': subscribe_success})
+                subscribe_success = "Yay! You have been subscribed. Contact the site owner to unsubscribe."
+                return render(request, "home.html", {'posts': posts, 'subscribe_success': subscribe_success})
+
+            except:
+                duplicate_email = ":) It seems we already have you on our list. Contact the site owner to unsubscribe."
+                return render(request, "home.html", {'posts': posts, 'duplicate_email': duplicate_email})
 
         else:
             invalid_email = "Enter a valid Email address please :)"
@@ -54,12 +59,18 @@ def newsletter(request):
 
         # check if the email is valid
         if (re.fullmatch(regex, email)):
-            #put email in the database
-            email_object = Emails.objects.create(email=email)
-            email_object.save()
 
-            subscribe_success = "Yay! You have been subscribed"
-            return render(request, "newsletter.html", {'subscribe_success': subscribe_success})
+            try:
+                #put email in the database
+                email_object = Emails.objects.create(email=email)
+                email_object.save()
+
+                subscribe_success = "Yay! You have been subscribed. Contact the site owner to unsubscribe."
+                return render(request, "newsletter.html", {'subscribe_success': subscribe_success})
+
+            except:
+                duplicate_email = ":) It seems we already have you on our list. Contact the site owner to unsubscribe."
+                return render(request, "newsletter.html", {'duplicate_email': duplicate_email})
 
         else:
             invalid_email = "Enter a valid Email address please :)"
